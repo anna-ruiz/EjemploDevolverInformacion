@@ -7,11 +7,27 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController , obtenerDatos{
 
+    @IBOutlet weak var lbResultado: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    
+        
+    
+    }
+    
+    
+    //Debemos resolverlo ya q en el protocolo solo lo hemos estandarizado
+    func obtener(dato: String) {
+        lbResultado.text = dato
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PASAR"{
+            let destino = segue.destination as! Ventana2ViewController
+            destino.delegate = self
+        }
     }
 
 
